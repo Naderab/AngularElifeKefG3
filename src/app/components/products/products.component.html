@@ -2,23 +2,33 @@
 
 <div class="container">
     <div class="row">
-        
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Search</label>
-            <input type="text" class="form-control" name="search" [(ngModel)]="searchText" >
-          </div>
-          <button type="button" class="btn btn-primary" (click)="Search()">Search</button>
+        <div class="col-md-3 col-xs-12 col-sm-6" >
 
+        <div class="mb-3">
+            <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Type here ..." >
+            <button type="button" class="btn btn-primary" (click)="Search()">Search</button>
+  
+        </div>
+</div>
+        </div>
+          <div class="row">
+
+          
     <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let p of products;let i = index">
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{p.title}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"><strong>Price : </strong>{{p.price}}</h6>
-      <p class="card-text"><strong>Quantity : </strong>{{p.quantity}}</p>
-      <p class="card-text"><strong>Likes : </strong>{{p.like}}</p>
-      <button type="button" class="btn btn-primary" (click)="Buy(p.id)" [disabled]="p.quantity == 0">Buy</button>
-      <button type="button" class="btn btn-primary" (click)="Like(p.id)">Like</button>
-    </div>
-  </div>
+    
+        <div class="card" style="width: 18rem;">
+            <img src={{p.picture}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{p.title}}</h5>
+              <p class="card-text"><strong>Price : </strong>{{p.price}}</p>
+              <p class="card-text"><strong>Quantity : </strong>{{p.quantity}}</p>
+              <p class="card-text"><strong>Likes : </strong>{{p.like}}</p>
+              <div class="actions">
+              <button type="button" class="btn btn-primary" (click)="Buy(p.id)" [disabled]="p.quantity == 0">Buy</button>
+              <button type="button" class="btn btn-success" (click)="Like(p.id)">Like</button>
+            </div>
+            </div>
+          </div>
+        
 </div>
 </div>
