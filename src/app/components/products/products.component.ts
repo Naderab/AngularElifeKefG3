@@ -9,6 +9,7 @@ import { Product } from 'src/app/core/Product';
 export class ProductsComponent implements OnInit {
   title:string = "Hello to products page";
   products:Product[] = [];
+  searchText:string = "";
   constructor() { }
 
   ngOnInit(): void {
@@ -27,4 +28,9 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  Search() {
+    
+   this.products =  this.products.filter((p)=> p.title.includes(this.searchText));
+
+  }
 }
