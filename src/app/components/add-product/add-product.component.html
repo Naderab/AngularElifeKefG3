@@ -1,28 +1,39 @@
 
 <div class="container">
     <h1>Add new product</h1>
-    <form (ngSubmit)="onSubmit()">
+    <form name="form" #form="ngForm" class="row g-3 needs-validation" (ngSubmit)="onSubmit()">
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
                 <label  class="form-label">Title :</label>
-                <input type="text" class="form-control" name="title"  [(ngModel)]="product.title" placeholder="type title here ...">
-              </div>
+                <input type="text" class="form-control" name="title"  [(ngModel)]="product.title" placeholder="type title here ..." #title="ngModel" required pattern="[a-z]{3,8}">
+                <div *ngIf="title.touched && title.invalid" class="alert alert-danger">
+                    <div *ngIf="title.errors?.['required']">Title is required</div>
+                    <div *ngIf="title.errors?.['pattern']">Title not valid</div>
+                </div>
+              
+            </div>
              
         </div>
         <div class="col-md-6">
             <div class="mb-3">
                 <label  class="form-label">Price :</label>
-                <input type="number" class="form-control" name="price" [(ngModel)]="product.price" placeholder="type price here ...">
-              </div>
+                <input type="number" class="form-control" name="price" [(ngModel)]="product.price" placeholder="type price here ..." #price="ngModel" required>
+                <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+                    Price is required
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
                 <label  class="form-label">Quantity :</label>
-                <input type="number" class="form-control" name="quantity" [(ngModel)]="product.quantity" placeholder="type quantity here ...">
-              </div>
+                <input type="number" class="form-control" name="quantity" [(ngModel)]="product.quantity" placeholder="type quantity here ..." #quantity="ngModel" required>
+                <div *ngIf="quantity.touched && quantity.invalid" class="alert alert-danger">
+                Quantity is required    
+                </div>
+            </div>
              
         </div>
         <div class="col-md-6">
@@ -35,7 +46,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="mb-3">
-                <button type="submit" class="btn btn-success">Add</button>
+                <button type="submit" class="btn btn-success" [disabled]="form.invalid">Add</button>
             </div>
         </div>
     </div>
