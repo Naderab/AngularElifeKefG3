@@ -39,4 +39,10 @@ export class ProductsComponent implements OnInit {
   verifier(){
     this.message = this.calcul.getNumberOf(this.products,'quantity',0)+'';
   }
+  delete(id:any){
+    this.productService.delete(id).subscribe(
+      data=>this.productService.get().subscribe(data=>this.products=data)
+    );
+
+  }
 }

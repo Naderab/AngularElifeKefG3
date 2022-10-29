@@ -1,38 +1,78 @@
-
-
 <div class="container">
-  <h1>{{title}}</h1>
-    <div class="row">
-        <div class="col-md-3 col-xs-12 col-sm-6" >
-          
-        <div class="mb-3">
-            <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Type here ..." >
-            <button type="button" class="btn btn-primary" (click)="Search()">Search</button>
-  
-        </div>
-</div>
-        </div>
-          <div class="row">
-
-          <button (click)="verifier()">Verif</button>
-          {{message}}
-    <div class="col-md-3 col-xs-12 col-sm-6" *ngFor="let p of products;let i = index">
-    
-        <div class="card" style="width: 18rem;">
-            <img src={{p.picture}} class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">{{p.title}}</h5>
-              <p class="card-text"><strong>Price : </strong>{{p.price}}</p>
-              <p class="card-text"><strong>Quantity : </strong>{{p.quantity}}</p>
-              <p class="card-text"><strong>Likes : </strong>{{p.like}}</p>
-              <div class="actions">
-              <button type="button" class="btn btn-primary" (click)="Buy(p.id)" [disabled]="p.quantity == 0">Buy</button>
-              <button type="button" class="btn btn-success" (click)="Like(p.id)">Like</button>
-              <a type="button" class="btn btn-success" [routerLink]="['/updateProduct',p.id]">Update</a>
-
-            </div>
-            </div>
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <div class="col-md-3 col-xs-12 col-sm-6">
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          name="search"
+          [(ngModel)]="searchText"
+          placeholder="Type here ..."
+        />
+      </div>
+      <div class="mb-3">
+        <button type="button" class="btn btn-primary" (click)="Search()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mb-3">
+      <button class="btn btn-primary" (click)="verifier()">Verif</button>
+    </div>
+  </div>
+  <div class="row">
+    {{ message }}
+    <div
+      class="col-md-3 col-xs-12 col-sm-6"
+      *ngFor="let p of products; let i = index"
+    >
+      <div class="card" style="width: 18rem">
+        <img
+          src="{{ p.picture }}"
+          class="card-img-top"
+          alt="..."
+          height="250"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ p.title }}</h5>
+          <p class="card-text"><strong>Price : </strong>{{ p.price }}</p>
+          <p class="card-text"><strong>Quantity : </strong>{{ p.quantity }}</p>
+          <p class="card-text"><strong>Likes : </strong>{{ p.like }}</p>
+          <div class="actions">
+            <button
+              type="button"
+              class="btn btn-outline-primary btn-sm"
+              (click)="Buy(p.id)"
+              [disabled]="p.quantity == 0"
+            >
+              Buy
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info btn-sm"
+              (click)="Like(p.id)"
+            >
+              Like
+            </button>
+            <a
+              type="button"
+              class="btn btn-outline-success btn-sm"
+              [routerLink]="['/updateProduct', p.id]"
+              >Update</a
+            >
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm"
+              (click)="delete(p.id)"
+            >
+              Delete
+            </button>
           </div>
-        
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
