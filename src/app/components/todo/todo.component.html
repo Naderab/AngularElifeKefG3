@@ -1,0 +1,10 @@
+<ul *ngFor="let t of todos;let i = index">
+    <li>{{t.userId}}</li>
+    <li>{{t.id}}</li>
+    <li>{{t.title}}</li>
+    <li>{{t.completed}}</li>
+</ul>
+<button (click)="bilan()">Bilan</button>
+<button (click)="getById()">Bilan 2</button>
+
+{{message}}
