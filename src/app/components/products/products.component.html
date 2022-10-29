@@ -28,6 +28,8 @@
               <div class="actions">
               <button type="button" class="btn btn-primary" (click)="Buy(p.id)" [disabled]="p.quantity == 0">Buy</button>
               <button type="button" class="btn btn-success" (click)="Like(p.id)">Like</button>
+              <a type="button" class="btn btn-success" [routerLink]="['/updateProduct',p.id]">Update</a>
+
             </div>
             </div>
           </div>

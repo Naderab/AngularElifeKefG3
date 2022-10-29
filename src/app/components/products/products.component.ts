@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/Product';
 import { CalculService } from 'src/app/services/calcul.service';
 import { TodoService } from 'src/app/services/todo.service';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -13,10 +14,12 @@ export class ProductsComponent implements OnInit {
   products:Product[] = [];
   searchText:string = "";
   message:string="";
-  constructor(private todo:TodoService,private calcul:CalculService) { }
+  constructor(private productService:ProductService,private calcul:CalculService) { }
 
   ngOnInit(): void {
-    this.products = this.todo.products;
+    this.productService.get().subscribe(
+      (data)=>this.products = data
+    )
   }
 
   Buy(id:string) {
